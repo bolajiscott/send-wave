@@ -13,6 +13,8 @@ import SwalInput from "../components/SwalInput";
 import { useProfileContext } from "../providers/ProfileProvider";
 import Swal from "sweetalert2";
 import Transaction from "../components/Transaction";
+import sendNotification from "./Courier-api";
+import { send } from "process";
 
 // const MySwal = withReactContent(sweetalert);
 const Modal = ({ profileForm, setProfileForm, submit }) => {
@@ -82,7 +84,9 @@ function ProfilePage() {
         setProfileForm((prev) => {
           return { ...prev, Email: email, image: img };
         });
+        
         setModal(true);
+         sendNotification({ userEmail: email})
       })
       .catch((err) => {
         Swal.fire({
@@ -92,6 +96,7 @@ function ProfilePage() {
           // footer: '<a href="">Why do I have this issue?</a>',
         });
         setModal(false);
+
       });
   }, []);
   const submitProfile = () => {
