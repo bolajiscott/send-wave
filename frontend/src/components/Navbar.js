@@ -30,7 +30,7 @@ function Navbar() {
     >
       <a className="text-xl font-bold" href="/">
         {" "}
-        Sendwave
+        Kriptocash
       </a>
       <AiOutlineBars
         className="text-lg md:hidden "
